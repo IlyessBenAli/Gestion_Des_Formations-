@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FormationModelStoreContainer" CdmEntityContainer="FormationEntities">
+    <EntitySetMapping Name="Formateur">
+      <EntityTypeMapping TypeName="FormationModel.Formateur">
+        <MappingFragment StoreEntitySet="Formateur">
+          <ScalarProperty Name="idformateur" ColumnName="idformateur" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="specialite" ColumnName="specialite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participant">
+      <EntityTypeMapping TypeName="FormationModel.Participant">
+        <MappingFragment StoreEntitySet="Participant">
+          <ScalarProperty Name="idparticipant" ColumnName="idparticipant" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartSession">
+      <EntityTypeMapping TypeName="FormationModel.PartSession">
+        <MappingFragment StoreEntitySet="PartSession">
+          <ScalarProperty Name="idpartsession" ColumnName="idpartsession" />
+          <ScalarProperty Name="idparticipant" ColumnName="idparticipant" />
+          <ScalarProperty Name="idsessionFormation" ColumnName="idsessionFormation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Responsable">
+      <EntityTypeMapping TypeName="FormationModel.Responsable">
+        <MappingFragment StoreEntitySet="Responsable">
+          <ScalarProperty Name="idresponsable" ColumnName="idresponsable" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reunion">
+      <EntityTypeMapping TypeName="FormationModel.Reunion">
+        <MappingFragment StoreEntitySet="Reunion">
+          <ScalarProperty Name="idreunion" ColumnName="idreunion" />
+          <ScalarProperty Name="sujet" ColumnName="sujet" />
+          <ScalarProperty Name="dateheure" ColumnName="dateheure" />
+          <ScalarProperty Name="idresponsable" ColumnName="idresponsable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reunionform">
+      <EntityTypeMapping TypeName="FormationModel.Reunionform">
+        <MappingFragment StoreEntitySet="Reunionform">
+          <ScalarProperty Name="idformateur" ColumnName="idformateur" />
+          <ScalarProperty Name="idreunion" ColumnName="idreunion" />
+          <ScalarProperty Name="idreunionform" ColumnName="idreunionform" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SessionFormation">
+      <EntityTypeMapping TypeName="FormationModel.SessionFormation">
+        <MappingFragment StoreEntitySet="SessionFormation">
+          <ScalarProperty Name="idsession" ColumnName="idsession" />
+          <ScalarProperty Name="titresession" ColumnName="titresession" />
+          <ScalarProperty Name="datedebutsession" ColumnName="datedebutsession" />
+          <ScalarProperty Name="datefinsession" ColumnName="datefinsession" />
+          <ScalarProperty Name="idformateur" ColumnName="idformateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FormationModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="FormationModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="FormationModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="FormationModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="FormationModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FormationModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="FormationModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FormationModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="FormationModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="FormationModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

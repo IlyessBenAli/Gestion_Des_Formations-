@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="79a879a64a44487abfb982b7c75d0e3b" Name="Diagram1">
+        <EntityTypeShape EntityType="FormationModel.Formateur" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormationModel.Participant" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormationModel.PartSession" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormationModel.Responsable" Width="1.5" PointX="1.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormationModel.Reunion" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormationModel.Reunionform" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormationModel.SessionFormation" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormationModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="FormationModel.FK__SessionFo__idfor__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="FormationModel.FK_Reunionform_Formateur" ManuallyRouted="false" />
+        <AssociationConnector Association="FormationModel.FK_PartSession_Participant" ManuallyRouted="false" />
+        <AssociationConnector Association="FormationModel.FK_PartSession_SessionFormation" ManuallyRouted="false" />
+        <AssociationConnector Association="FormationModel.FK__Reunion__idrespo__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="FormationModel.FK_Reunionform_Reunion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,15 @@
+C:\Users\ILYESS LASS\source\repos\Data\bin\Debug\Data.exe.config
+C:\Users\ILYESS LASS\source\repos\Data\bin\Debug\Data.exe
+C:\Users\ILYESS LASS\source\repos\Data\bin\Debug\Data.pdb
+C:\Users\ILYESS LASS\source\repos\Data\bin\Debug\EntityFramework.dll
+C:\Users\ILYESS LASS\source\repos\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ILYESS LASS\source\repos\Data\bin\Debug\EntityFramework.xml
+C:\Users\ILYESS LASS\source\repos\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ILYESS LASS\source\repos\Data\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\ILYESS LASS\source\repos\Data\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\ILYESS LASS\source\repos\Data\obj\Debug\Data.csproj.AssemblyReference.cache
+C:\Users\ILYESS LASS\source\repos\Data\obj\Debug\Data.csproj.SuggestedBindingRedirects.cache
+C:\Users\ILYESS LASS\source\repos\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+C:\Users\ILYESS LASS\source\repos\Data\obj\Debug\Data.csproj.CopyComplete
+C:\Users\ILYESS LASS\source\repos\Data\obj\Debug\Data.exe
+C:\Users\ILYESS LASS\source\repos\Data\obj\Debug\Data.pdb

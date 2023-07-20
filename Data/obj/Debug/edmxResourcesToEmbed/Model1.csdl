@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FormationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Formateur">
+    <Key>
+      <PropertyRef Name="idformateur" />
+    </Key>
+    <Property Name="idformateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="specialite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SessionFormation" Relationship="Self.FK__SessionFo__idfor__30F848ED" FromRole="Formateur" ToRole="SessionFormation" />
+    <NavigationProperty Name="Reunionform" Relationship="Self.FK_Reunionform_Formateur" FromRole="Formateur" ToRole="Reunionform" />
+  </EntityType>
+  <EntityType Name="Participant">
+    <Key>
+      <PropertyRef Name="idparticipant" />
+    </Key>
+    <Property Name="idparticipant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PartSession" Relationship="Self.FK_PartSession_Participant" FromRole="Participant" ToRole="PartSession" />
+  </EntityType>
+  <EntityType Name="PartSession">
+    <Key>
+      <PropertyRef Name="idpartsession" />
+    </Key>
+    <Property Name="idpartsession" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idparticipant" Type="Int32" />
+    <Property Name="idsessionFormation" Type="Int32" />
+    <NavigationProperty Name="Participant" Relationship="Self.FK_PartSession_Participant" FromRole="PartSession" ToRole="Participant" />
+    <NavigationProperty Name="SessionFormation" Relationship="Self.FK_PartSession_SessionFormation" FromRole="PartSession" ToRole="SessionFormation" />
+  </EntityType>
+  <EntityType Name="Responsable">
+    <Key>
+      <PropertyRef Name="idresponsable" />
+    </Key>
+    <Property Name="idresponsable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Reunion" Relationship="Self.FK__Reunion__idrespo__1BFD2C07" FromRole="Responsable" ToRole="Reunion" />
+  </EntityType>
+  <EntityType Name="Reunion">
+    <Key>
+      <PropertyRef Name="idreunion" />
+    </Key>
+    <Property Name="idreunion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sujet" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateheure" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idresponsable" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Responsable" Relationship="Self.FK__Reunion__idrespo__1BFD2C07" FromRole="Reunion" ToRole="Responsable" />
+    <NavigationProperty Name="Reunionform" Relationship="Self.FK_Reunionform_Reunion" FromRole="Reunion" ToRole="Reunionform" />
+  </EntityType>
+  <EntityType Name="Reunionform">
+    <Key>
+      <PropertyRef Name="idreunionform" />
+    </Key>
+    <Property Name="idformateur" Type="Int32" />
+    <Property Name="idreunion" Type="Int32" />
+    <Property Name="idreunionform" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Formateur" Relationship="Self.FK_Reunionform_Formateur" FromRole="Reunionform" ToRole="Formateur" />
+    <NavigationProperty Name="Reunion" Relationship="Self.FK_Reunionform_Reunion" FromRole="Reunionform" ToRole="Reunion" />
+  </EntityType>
+  <EntityType Name="SessionFormation">
+    <Key>
+      <PropertyRef Name="idsession" />
+    </Key>
+    <Property Name="idsession" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titresession" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="datedebutsession" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="datefinsession" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idformateur" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Formateur" Relationship="Self.FK__SessionFo__idfor__30F848ED" FromRole="SessionFormation" ToRole="Formateur" />
+    <NavigationProperty Name="PartSession" Relationship="Self.FK_PartSession_SessionFormation" FromRole="SessionFormation" ToRole="PartSession" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__SessionFo__idfor__30F848ED">
+    <End Role="Formateur" Type="Self.Formateur" Multiplicity="1" />
+    <End Role="SessionFormation" Type="Self.SessionFormation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formateur">
+        <PropertyRef Name="idformateur" />
+      </Principal>
+      <Dependent Role="SessionFormation">
+        <PropertyRef Name="idformateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reunionform_Formateur">
+    <End Role="Formateur" Type="Self.Formateur" Multiplicity="0..1" />
+    <End Role="Reunionform" Type="Self.Reunionform" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formateur">
+        <PropertyRef Name="idformateur" />
+      </Principal>
+      <Dependent Role="Reunionform">
+        <PropertyRef Name="idformateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartSession_Participant">
+    <End Role="Participant" Type="Self.Participant" Multiplicity="0..1" />
+    <End Role="PartSession" Type="Self.PartSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participant">
+        <PropertyRef Name="idparticipant" />
+      </Principal>
+      <Dependent Role="PartSession">
+        <PropertyRef Name="idparticipant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartSession_SessionFormation">
+    <End Role="SessionFormation" Type="Self.SessionFormation" Multiplicity="0..1" />
+    <End Role="PartSession" Type="Self.PartSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SessionFormation">
+        <PropertyRef Name="idsession" />
+      </Principal>
+      <Dependent Role="PartSession">
+        <PropertyRef Name="idsessionFormation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reunion__idrespo__1BFD2C07">
+    <End Role="Responsable" Type="Self.Responsable" Multiplicity="1" />
+    <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Responsable">
+        <PropertyRef Name="idresponsable" />
+      </Principal>
+      <Dependent Role="Reunion">
+        <PropertyRef Name="idresponsable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reunionform_Reunion">
+    <End Role="Reunion" Type="Self.Reunion" Multiplicity="0..1" />
+    <End Role="Reunionform" Type="Self.Reunionform" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reunion">
+        <PropertyRef Name="idreunion" />
+      </Principal>
+      <Dependent Role="Reunionform">
+        <PropertyRef Name="idreunion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FormationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Formateur" EntityType="Self.Formateur" />
+    <EntitySet Name="Participant" EntityType="Self.Participant" />
+    <EntitySet Name="PartSession" EntityType="Self.PartSession" />
+    <EntitySet Name="Responsable" EntityType="Self.Responsable" />
+    <EntitySet Name="Reunion" EntityType="Self.Reunion" />
+    <EntitySet Name="Reunionform" EntityType="Self.Reunionform" />
+    <EntitySet Name="SessionFormation" EntityType="Self.SessionFormation" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK__SessionFo__idfor__30F848ED" Association="Self.FK__SessionFo__idfor__30F848ED">
+      <End Role="Formateur" EntitySet="Formateur" />
+      <End Role="SessionFormation" EntitySet="SessionFormation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reunionform_Formateur" Association="Self.FK_Reunionform_Formateur">
+      <End Role="Formateur" EntitySet="Formateur" />
+      <End Role="Reunionform" EntitySet="Reunionform" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartSession_Participant" Association="Self.FK_PartSession_Participant">
+      <End Role="Participant" EntitySet="Participant" />
+      <End Role="PartSession" EntitySet="PartSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartSession_SessionFormation" Association="Self.FK_PartSession_SessionFormation">
+      <End Role="SessionFormation" EntitySet="SessionFormation" />
+      <End Role="PartSession" EntitySet="PartSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reunion__idrespo__1BFD2C07" Association="Self.FK__Reunion__idrespo__1BFD2C07">
+      <End Role="Responsable" EntitySet="Responsable" />
+      <End Role="Reunion" EntitySet="Reunion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reunionform_Reunion" Association="Self.FK_Reunionform_Reunion">
+      <End Role="Reunion" EntitySet="Reunion" />
+      <End Role="Reunionform" EntitySet="Reunionform" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(FormationModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(FormationModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
